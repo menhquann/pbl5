@@ -23,4 +23,4 @@ def index():
 # def video():
 #     return Response(gen(),mimetype='multipart/x-mixed-replace; boundary=frame')
 
-# application.run(debug=True)
+application.run(debug=True)
