@@ -19,16 +19,16 @@ def index():
 
 def gen():
     """Video streaming generator function."""
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture('768x576.avi')
     model = E2E()
     # Read until video is completed
     while (cap.isOpened()):
         # Capture frame-by-frame
-        # ret, img = cap.read()
+        ret, img = cap.read()
 
-        img_resp = urllib.request.urlopen(urlCamera)
-        imgnp = np.array(bytearray(img_resp.read()), dtype=np.uint8)
-        img = cv2.imdecode(imgnp, -1)
+        # img_resp = urllib.request.urlopen(urlCamera)
+        # imgnp = np.array(bytearray(img_resp.read()), dtype=np.uint8)
+        # img = cv2.imdecode(imgnp, -1)
         img = cv2.resize(img, (0, 0), fx=0.5, fy=0.5)
         try:
             image = model.predict(img)
@@ -45,3 +45,4 @@ def video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+# application.run(port=5010)
