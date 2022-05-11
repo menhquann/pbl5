@@ -8,10 +8,10 @@ warnings.filterwarnings("ignore")
 from src.lp_recognition import E2E
 
 urlCamera = 'http://192.168.1.110/cam-hi.jpg'
-app = Flask(__name__)
+application = Flask(__name__)
 
 
-@app.route('/')
+@application.route('/')
 def index():
     """Video streaming home page."""
     return render_template('index.html')
@@ -40,7 +40,7 @@ def gen():
         time.sleep(0.1)
 
 
-@app.route('/video_feed')
+@application.route('/video_feed')
 def video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(),
