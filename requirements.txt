@@ -4,8 +4,8 @@ keras==2.8.0
 keras_nightly==2.9.0.dev2022030908
 matplotlib==3.5.1
 numpy==1.22.0
-opencv_python==4.5.5.64
+opencv-contrib-python-headless
 requests==2.27.1
-skimage==0.0
+scikit-image
 tensorflow==2.8.0
 tf_nightly_gpu==2.9.0.dev20220308
