@@ -1,11 +1,13 @@
 Flask==2.1.2
-imutils==0.5.4
-keras==2.8.0
+scikit-image
+tensorflow-cpu
+opencv-contrib-python-headless
+imutils
+keras
 # keras_nightly==2.9.0.dev2022030908
 matplotlib==3.5.1
 numpy==1.22.0
-opencv-contrib-python-headless
+
 requests==2.27.1
-scikit-image
-tensorflow-cpu
+
 # tf_nightly_gpu==2.9.0.dev20220308
