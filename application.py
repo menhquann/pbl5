@@ -7,7 +7,7 @@ import numpy as np
 warnings.filterwarnings("ignore")
 from src.lp_recognition import E2E
 
-urlCamera = 'http://192.168.1.110/cam-hi.jpg'
+urlCamera = 'https://scontent.xx.fbcdn.net/v/t1.15752-9/262719541_1245270879292641_3943295472295597787_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=aee45a&_nc_ohc=AbrqOdmxL7IAX9YGc5D&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AVKgFGOti5k9o0DJ9xdnokGZmwm_umUtUzuVck0ODYQHrA&oe=6295B5C6'
 application = Flask(__name__)
 
 
@@ -24,11 +24,16 @@ def gen():
     # Read until video is completed
     while (cap.isOpened()):
         # Capture frame-by-frame
+
+        #video
         ret, img = cap.read()
 
+        # anh
         # img_resp = urllib.request.urlopen(urlCamera)
         # imgnp = np.array(bytearray(img_resp.read()), dtype=np.uint8)
         # img = cv2.imdecode(imgnp, -1)
+
+
         img = cv2.resize(img, (0, 0), fx=0.5, fy=0.5)
         try:
             image = model.predict(img)
@@ -45,4 +50,4 @@ def video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
-# application.run(port=5011)
+# application.run(port=5012)
