@@ -57,7 +57,7 @@ class E2E(object):
 
             # crop number plate used by bird's eyes view transformation
             LpRegion = perspective.four_point_transform(self.image, pts)
-            cv2.imshow("crop", LpRegion)
+            # cv2.imshow("crop", LpRegion)
             # segmentation
             self.segmentation(LpRegion)
 
@@ -85,7 +85,7 @@ class E2E(object):
         # adaptive threshold
         T = threshold_local(V, 15, offset=10, method="gaussian")
         thresh = (V > T).astype("uint8") * 255
-        cv2.imshow("adaptive", thresh)
+        # cv2.imshow("adaptive", thresh)
 
         # convert black pixel of digits to white pixel
         thresh = cv2.bitwise_not(thresh)
@@ -153,7 +153,7 @@ class E2E(object):
 
         character = cv2.hconcat(self.character_in_plate)
         print([c[0] for c in self.candidates])
-        cv2.imshow('character',character)
+        # cv2.imshow('character',character)
         self.character_in_plate = []
 
 
