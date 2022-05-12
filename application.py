@@ -7,7 +7,9 @@ import numpy as np
 warnings.filterwarnings("ignore")
 from src.lp_recognition import E2E
 
-urlCamera = 'https://scontent.xx.fbcdn.net/v/t1.15752-9/262719541_1245270879292641_3943295472295597787_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=aee45a&_nc_ohc=AbrqOdmxL7IAX9YGc5D&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AVKgFGOti5k9o0DJ9xdnokGZmwm_umUtUzuVck0ODYQHrA&oe=6295B5C6'
+# urlCamera = 'https://scontent.xx.fbcdn.net/v/t1.15752-9/262719541_1245270879292641_3943295472295597787_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=aee45a&_nc_ohc=AbrqOdmxL7IAX9YGc5D&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AVKgFGOti5k9o0DJ9xdnokGZmwm_umUtUzuVck0ODYQHrA&oe=6295B5C6'
+# urlCamera = 'https://icdn.dantri.com.vn/zoom/1200_630/2019/05/18/loat-xe-may-bien-so-dep-gia-sieu-dat-tuan-qua-1-1558138698605.jpg'
+urlCamera = "https://398e-2402-800-6294-656-58bd-a46-3862-5fb9.ngrok.io/cam-lo.jpg"
 application = Flask(__name__)
 
 
@@ -19,19 +21,19 @@ def index():
 
 def gen():
     """Video streaming generator function."""
-    cap = cv2.VideoCapture('768x576.avi')
+    # cap = cv2.VideoCapture(0)
     model = E2E()
     # Read until video is completed
-    while (cap.isOpened()):
+    while (True):
         # Capture frame-by-frame
 
         #video
-        ret, img = cap.read()
+        # ret, img = cap.read()
 
         # anh
-        # img_resp = urllib.request.urlopen(urlCamera)
-        # imgnp = np.array(bytearray(img_resp.read()), dtype=np.uint8)
-        # img = cv2.imdecode(imgnp, -1)
+        img_resp = urllib.request.urlopen(urlCamera)
+        imgnp = np.array(bytearray(img_resp.read()), dtype=np.uint8)
+        img = cv2.imdecode(imgnp, -1)
 
 
         img = cv2.resize(img, (0, 0), fx=0.5, fy=0.5)
@@ -50,4 +52,4 @@ def video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
-# application.run(port=5012)
+# application.run(port=5013)
