@@ -13,7 +13,7 @@ from src.lp_recognition import E2E
 
 # https://6993-2402-800-6294-9b5c-95f6-ede4-d3-2657.ngrok.io
 
-urlCamera= "https://3082-2402-800-6294-9b5c-711f-e2bb-adad-3af3.ap.ngrok.io/cam-hi.jpg"
+urlCamera= "https://21d5-2402-9d80-433-a420-281b-73b8-29dc-fe32.ap.ngrok.io/cam-hi.jpg"
 
 application = Flask(__name__)
 
